@@ -1,0 +1,23 @@
+version: '3'
+services:
+  streamlit-app:
+    container_name: eda-ui
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8020:8501"
+    volumes:
+      - .:/app
+    networks:
+          default:
+            ipv4_address: 172.25.0.10
+    stdin_open: true
+    tty: true
+volumes:
+    static_volume: {}
+networks:
+  default:
+    external:
+      name: streamlit-network
