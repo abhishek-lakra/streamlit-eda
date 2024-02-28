@@ -13,6 +13,9 @@ config.read('/app/config.ini')
 
 FILE_DIR = config.get('PATH', 'FILE_DIR')
 
+if not os.path.exists(FILE_DIR):
+    os.makedirs(FILE_DIR)
+
 Style()
 
 def save_uploaded_file(uploaded_file, file_name):
